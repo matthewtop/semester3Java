@@ -1,6 +1,9 @@
 import java.nio.charset.StandardCharsets;
 import java.text.MessageFormat;
+import java.text.SimpleDateFormat;
 import java.util.Base64;
+import java.util.Date;
+
 import static java.lang.System.out;
 
 /**
@@ -18,12 +21,13 @@ public class HelloWorld {
     public static void main(String[] args) {
         StringBuffer buffer = new StringBuffer();
         String decoded = new String(Base64.getDecoder().decode(encoded), StandardCharsets.UTF_8);
-        for (int index = 0; index < decoded.length(); index+=10) {
+        for(int index = 0 ; index < decoded.length() ; index += 10 ) {
             @SuppressWarnings("unused")
             char character = decoded.charAt(index);
             buffer.append(character);
         }
         out.println(decoded.replaceAll(MessageFormat.format("[{0}]", buffer.toString()),"-"));
+        System.out.println( MessageFormat.format("{0}", new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS").format(new Date())));
     }
 
 }
