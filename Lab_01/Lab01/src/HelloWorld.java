@@ -3,7 +3,6 @@ import java.text.MessageFormat;
 import java.text.SimpleDateFormat;
 import java.util.Base64;
 import java.util.Date;
-
 import static java.lang.System.out;
 
 /**
@@ -17,7 +16,6 @@ import static java.lang.System.out;
 
 public class HelloWorld {
     static final String encoded = "V3lkemlhxYIgSW5mb3JtYXR5a2kgWmFjaG9kbmlvcG9tb3Jza2kgVW5pd2Vyc3l0ZXQgVGVjaG5vbG9naWN6bnkgdyBTemN6ZWNpbmll";
-
     public static void main(String[] args) {
         StringBuffer buffer = new StringBuffer();
         String decoded = new String(Base64.getDecoder().decode(encoded), StandardCharsets.UTF_8);
@@ -29,5 +27,4 @@ public class HelloWorld {
         out.println(decoded.replaceAll(MessageFormat.format("[{0}]", buffer.toString()),"-"));
         System.out.println( MessageFormat.format("{0}", new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS").format(new Date())));
     }
-
 }
