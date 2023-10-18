@@ -1,18 +1,14 @@
 class Test {
     public static void main(String[] args) {
-        int wybor=3;
-        switch(wybor){
-            case 1:
-                System.out.println();
-            case 2:
-                System.out.println();
-            default:
-                System.out.println();
-            case 3:
-                System.out.println();
-
+        int []a = {1,2,3,4,5};
+        int suma = 0;
+//        for(int i = 0; i<a.length; i++){
+//            suma += a[i];
+//        }
+        for (int i:a)
+        {
+            suma += i;
         }
-
-
+        System.out.println(suma);
     }
 }
