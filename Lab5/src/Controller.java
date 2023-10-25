@@ -5,11 +5,21 @@ public class Controller {
     private View view;
     private Scanner scanner;
 
+    public Controller(){}
 
-//    public void run(){
-//        view.showMainMenu();
-//        chooseMainOption();
-//    }
+    public Controller(Model model, View view, Scanner scanner){
+        this.model=model;
+        this.view=view;
+        this.scanner=scanner;
+    }
+
+
+    public void run(){
+        while (true) {
+            view.showMainMenu();
+            chooseMainOption();
+        }
+    }
 
 
 
@@ -28,6 +38,8 @@ public class Controller {
             case 3:
                 chooseThirdOption();
                 break;
+            case 4:
+                System.exit(0);
             default:
                 System.err.println("Wrong data");
                 break;
@@ -37,8 +49,8 @@ public class Controller {
     }
 
     public void chooseSecondOption(){
-        int wybor=scanner.nextInt();
         view.showSecondMenu();
+        int wybor=scanner.nextInt();
         switch (wybor){
             case 1:
                 model.setMatrix("TA", transpose(model.getMatrix("A")));
