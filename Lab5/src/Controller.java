@@ -1,18 +1,15 @@
 import java.util.Scanner;
 
 public class Controller {
-    private Model model;
-    private View view;
-    private Scanner scanner;
-
-    public Controller(){}
+    private final Model model;
+    private final View view;
+    private final Scanner scanner;
 
     public Controller(Model model, View view, Scanner scanner){
         this.model=model;
         this.view=view;
         this.scanner=scanner;
     }
-
 
     public void run(){
         while (true) {
@@ -21,16 +18,11 @@ public class Controller {
         }
     }
 
-
-
-   // public Controller(){}
-
     public void chooseMainOption(){
-        int wybor=scanner.nextInt();
-        switch (wybor){
+        int choice=scanner.nextInt();
+        switch (choice){
             case 1:
-                model.setMatrix("A",insertMatrix());
-                model.setMatrix("B",insertMatrix());
+                createEnteringMatrixes();
                 break;
             case 2:
                 chooseSecondOption();
@@ -43,54 +35,56 @@ public class Controller {
             default:
                 System.err.println("Wrong data");
                 break;
-
-
         }
+    }
+
+    public void createEnteringMatrixes(){
+        model.setMatrix("A",insertMatrix());
+        model.setMatrix("B",insertMatrix());
     }
 
     public void chooseSecondOption(){
         view.showSecondMenu();
-        int wybor=scanner.nextInt();
-        switch (wybor){
+        int choice=scanner.nextInt();
+        switch (choice){
             case 1:
                 model.setMatrix("TA", transpose(model.getMatrix("A")));
                 model.setMatrix("TB", transpose(model.getMatrix("B")));
                 break;
             case 2:
-                //TODO MNOZENIE
+                model.setMatrix("C",multiply(model.getMatrix("A"), model.getMatrix("B")));
                 break;
             case 3:
-                //todo
+                model.setMatrix("TC", transpose(model.getMatrix("C")));
                 break;
             default:
                 System.err.println("Wrong data");
                 break;
-
         }
-
-
     }
 
     public void chooseThirdOption(){
         view.showThirdMenu();
-        int wybor=scanner.nextInt();
-        switch (wybor){
+        int choice=scanner.nextInt();
+        switch (choice){
             case 1:
-                view.showMatrix(model.getMatrix("A"));
-                view.showMatrix(model.getMatrix("B"));
+                System.out.println("Macierz A: ");
+                showMatrix(model.getMatrix("A"));
+                System.out.println("Macierz B: ");
+                showMatrix(model.getMatrix("B"));
                 break;
             case 2:
-                view.showMatrix(model.getMatrix("TA"));
-                view.showMatrix(model.getMatrix("TB"));
+                showMatrix(model.getMatrix("C"));
+                break;
+            case 3:
+                showMatrix(model.getMatrix("TA"));
+                showMatrix(model.getMatrix("TB"));
                 break;
             default:
                 System.err.println("Wrong data");
                 break;
         }
-
-
     }
-
 
     public int[][] insertMatrix(){
         System.out.println("Liczba wierszy: ");
@@ -108,6 +102,15 @@ public class Controller {
         return matrix;
     }
 
+    public void showMatrix(int[][] matrix) {
+        for (int[] ints : matrix) {
+            for (int j = 0; j < matrix[0].length; j++) {
+                System.out.print(ints[j] + " ");
+            }
+            System.out.println();
+        }
+    }
+
     public int [][] transpose(int[][]matrix){
         int rows=matrix.length;
         int columns=matrix[0].length;
@@ -120,12 +123,19 @@ public class Controller {
         return transposed;
     }
 
-    public int [][] multiply(){
-        return null;
+    public int [][] multiply(int [][]matrixA, int[][]matrixB) {
+        int[][] matrixCtemp = new int[matrixA.length][matrixB.length];
+        if (matrixA[0].length == matrixB.length) {
+            for (int i = 0; i < matrixCtemp.length; i++) {
+                for (int j = 0; j < matrixCtemp.length; j++) {
+                    for (int k = 0; k < matrixA[0].length; k++) {
+                        matrixCtemp[i][j] += matrixA[i][k] * matrixB[k][j];
+                    }
+                }
+            }
+        } else {
+            System.err.println("Nieprawidlowy wymiar macierzy");
+        }
+        return matrixCtemp;
     }
-
-
-
-
-
 }
