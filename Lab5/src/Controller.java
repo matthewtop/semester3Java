@@ -77,7 +77,9 @@ public class Controller {
                 showMatrix(model.getMatrix("C"));
                 break;
             case 3:
+                System.out.println("Transponowana macierz A: ");
                 showMatrix(model.getMatrix("TA"));
+                System.out.println("Transponowana macierz B: ");
                 showMatrix(model.getMatrix("TB"));
                 break;
             default:
