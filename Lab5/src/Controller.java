@@ -48,8 +48,7 @@ public class Controller {
         int choice=scanner.nextInt();
         switch (choice){
             case 1:
-                model.setMatrix("TA", transpose(model.getMatrix("A")));
-                model.setMatrix("TB", transpose(model.getMatrix("B")));
+                transposeMatrixesAandB();
                 break;
             case 2:
                 model.setMatrix("C",multiply(model.getMatrix("A"), model.getMatrix("B")));
@@ -62,30 +61,41 @@ public class Controller {
                 break;
         }
     }
+    public void transposeMatrixesAandB(){
+        model.setMatrix("TA", transpose(model.getMatrix("A")));
+        model.setMatrix("TB", transpose(model.getMatrix("B")));
+    }
 
     public void chooseThirdOption(){
         view.showThirdMenu();
         int choice=scanner.nextInt();
         switch (choice){
             case 1:
-                System.out.println("Macierz A: ");
-                showMatrix(model.getMatrix("A"));
-                System.out.println("Macierz B: ");
-                showMatrix(model.getMatrix("B"));
+                showAandB();
                 break;
             case 2:
                 showMatrix(model.getMatrix("C"));
                 break;
             case 3:
-                System.out.println("Transponowana macierz A: ");
-                showMatrix(model.getMatrix("TA"));
-                System.out.println("Transponowana macierz B: ");
-                showMatrix(model.getMatrix("TB"));
+                showTransposedAandB();
                 break;
             default:
                 System.err.println("Wrong data");
                 break;
         }
+    }
+
+    public void showAandB(){
+        System.out.println("Macierz A: ");
+        showMatrix(model.getMatrix("A"));
+        System.out.println("Macierz B: ");
+        showMatrix(model.getMatrix("B"));
+    }
+    public void showTransposedAandB(){
+        System.out.println("Transponowana macierz A: ");
+        showMatrix(model.getMatrix("TA"));
+        System.out.println("Transponowana macierz B: ");
+        showMatrix(model.getMatrix("TB"));
     }
 
     public int[][] insertMatrix(){
@@ -105,6 +115,9 @@ public class Controller {
     }
 
     public void showMatrix(int[][] matrix) {
+        if(matrix.length==0 || matrix[0].length==0){
+            System.err.println("Macierz jest pusta");
+        }
         for (int[] ints : matrix) {
             for (int j = 0; j < matrix[0].length; j++) {
                 System.out.print(ints[j] + " ");

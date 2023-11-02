@@ -34,7 +34,4 @@ public class Model {
         if (name.equals("TC")){return transposedMatrixC;}
         return null;
     }
-
-
-
 }
