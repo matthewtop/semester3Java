@@ -7,13 +7,13 @@ public class Controller {
 
     public Controller(Model model, View view, Scanner scanner){
         this.model=model;
-        this.view=view;
+        this.view = view;
         this.scanner=scanner;
     }
 
     public void run(){
         while (true) {
-            view.showMainMenu();
+            View.showMainMenu();
             chooseMainOption();
         }
     }
@@ -33,18 +33,18 @@ public class Controller {
             case 4:
                 System.exit(0);
             default:
-                System.err.println("Wrong data");
+                View.wrongChoiceError();
                 break;
         }
     }
 
     public void createEnteringMatrixes(){
-        model.setMatrix("A",insertMatrix());
-        model.setMatrix("B",insertMatrix());
+        model.setMatrix("A",insertMatrix(getRows(),getColumns()));
+        model.setMatrix("B",insertMatrix(getRows(),getColumns()));
     }
 
     public void chooseSecondOption(){
-        view.showSecondMenu();
+        View.showSecondMenu();
         int choice=scanner.nextInt();
         switch (choice){
             case 1:
@@ -57,7 +57,7 @@ public class Controller {
                 model.setMatrix("TC", transpose(model.getMatrix("C")));
                 break;
             default:
-                System.err.println("Wrong data");
+                View.wrongChoiceError();
                 break;
         }
     }
@@ -67,44 +67,29 @@ public class Controller {
     }
 
     public void chooseThirdOption(){
-        view.showThirdMenu();
+        View.showThirdMenu();
         int choice=scanner.nextInt();
         switch (choice){
             case 1:
-                showAandB();
+                view.displayMatrix("A");
+                view.displayMatrix("B");
                 break;
             case 2:
-                showMatrix(model.getMatrix("C"));
+                view.displayMatrix("C");
                 break;
             case 3:
-                showTransposedAandB();
+                view.displayMatrix("TA");
+                view.displayMatrix("TB");
                 break;
             default:
-                System.err.println("Wrong data");
+                View.wrongChoiceError();
                 break;
         }
     }
 
-    public void showAandB(){
-        System.out.println("Macierz A: ");
-        showMatrix(model.getMatrix("A"));
-        System.out.println("Macierz B: ");
-        showMatrix(model.getMatrix("B"));
-    }
-    public void showTransposedAandB(){
-        System.out.println("Transponowana macierz A: ");
-        showMatrix(model.getMatrix("TA"));
-        System.out.println("Transponowana macierz B: ");
-        showMatrix(model.getMatrix("TB"));
-    }
-
-    public int[][] insertMatrix(){
-        System.out.println("Liczba wierszy: ");
-        int rows=scanner.nextInt();
-        System.out.println("Liczba kolumn: ");
-        int columns = scanner.nextInt();
+    public int[][] insertMatrix(int rows, int columns){
         int[][] matrix = new int[rows][columns];
-        System.out.println("Wprowadz wartosci: ");
+        View.getValues();
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < columns; j++) {
                 System.out.print("Element [" +(i+1) + "]" + (j+1) + "]: " );
@@ -114,9 +99,19 @@ public class Controller {
         return matrix;
     }
 
-    public void showMatrix(int[][] matrix) {
+    public int getRows(){
+        View.howManyRows();
+        return scanner.nextInt();
+    }
+
+    public int getColumns(){
+        View.howManyColumns();
+        return scanner.nextInt();
+    }
+
+    public static void showMatrix(int[][] matrix) {
         if(matrix.length==0 || matrix[0].length==0){
-            System.err.println("Macierz jest pusta");
+            View.matrixIsEmptyError();
         }
         for (int[] ints : matrix) {
             for (int j = 0; j < matrix[0].length; j++) {
@@ -149,7 +144,7 @@ public class Controller {
                 }
             }
         } else {
-            System.err.println("Nieprawidlowy wymiar macierzy");
+            View.wrongMatrixSizeError();
         }
         return matrixCtemp;
     }
