@@ -1,4 +1,5 @@
 import java.util.Scanner;
+import View.*;
 
 public class Controller {
     private final Model model;
@@ -13,7 +14,7 @@ public class Controller {
 
     public void run(){
         while (true) {
-            View.showMainMenu();
+            Menus.showMainMenu();
             chooseMainOption();
         }
     }
@@ -33,7 +34,7 @@ public class Controller {
             case 4:
                 System.exit(0);
             default:
-                View.wrongChoiceError();
+                Errors.wrongChoiceError();
                 break;
         }
     }
@@ -44,7 +45,7 @@ public class Controller {
     }
 
     public void chooseSecondOption(){
-        View.showSecondMenu();
+        Menus.showSecondMenu();
         int choice=scanner.nextInt();
         switch (choice){
             case 1:
@@ -57,7 +58,7 @@ public class Controller {
                 model.setMatrix("TC", transpose(model.getMatrix("C")));
                 break;
             default:
-                View.wrongChoiceError();
+                Errors.wrongChoiceError();
                 break;
         }
     }
@@ -67,7 +68,7 @@ public class Controller {
     }
 
     public void chooseThirdOption(){
-        View.showThirdMenu();
+        Menus.showThirdMenu();
         int choice=scanner.nextInt();
         switch (choice){
             case 1:
@@ -82,7 +83,7 @@ public class Controller {
                 view.displayMatrix("TB");
                 break;
             default:
-                View.wrongChoiceError();
+                Errors.wrongChoiceError();
                 break;
         }
     }
@@ -111,7 +112,7 @@ public class Controller {
 
     public static void showMatrix(int[][] matrix) {
         if(matrix.length==0 || matrix[0].length==0){
-            View.matrixIsEmptyError();
+            Errors.matrixIsEmptyError();
         }
         for (int[] ints : matrix) {
             for (int j = 0; j < matrix[0].length; j++) {
@@ -144,7 +145,7 @@ public class Controller {
                 }
             }
         } else {
-            View.wrongMatrixSizeError();
+            Errors.wrongMatrixSizeError();
         }
         return matrixCtemp;
     }

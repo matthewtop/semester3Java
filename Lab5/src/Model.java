@@ -18,7 +18,7 @@ public class Model {
 
     public void setMatrix(String name, int [][]matrix){
         if(name.equals("A")){matrixA=matrix;}
-        if (name.equals("B")){matrixB=matrix;}
+        if(name.equals("B")){matrixB=matrix;}
         if(name.equals("C")){matrixC=matrix;}
         if(name.equals("TA")){transposedMatrixA=matrix;}
         if(name.equals("TB")){transposedMatrixB=matrix;}
