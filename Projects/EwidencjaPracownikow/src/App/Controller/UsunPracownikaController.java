@@ -5,11 +5,9 @@ import App.Model.EwidencjaPracownikow;
 import java.util.Scanner;
 
 public class UsunPracownikaController {
-    private EwidencjaPracownikow ewidencja;
     private Scanner scanner;
 
-    public UsunPracownikaController(EwidencjaPracownikow ewidencja, Scanner scanner) {
-        this.ewidencja = ewidencja;
+    public UsunPracownikaController(Scanner scanner) {
         this.scanner=scanner;
     }
 

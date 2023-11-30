@@ -1,18 +1,15 @@
 package App.Controller;
 
 
-import App.Model.EwidencjaPracownikow;
 import App.View.Errors;
 import App.View.Menus;
 
 import java.util.Scanner;
 
 public class DodajPracownikaController {
-    private EwidencjaPracownikow ewidencja;
-    private Scanner scanner;
+    private final Scanner scanner;
 
-    public DodajPracownikaController(EwidencjaPracownikow ewidencja, Scanner scanner) {
-        this.ewidencja = ewidencja;
+    public DodajPracownikaController(Scanner scanner) {
         this.scanner =scanner;
     }
 

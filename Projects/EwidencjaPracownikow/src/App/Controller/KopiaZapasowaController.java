@@ -9,11 +9,10 @@ import static App.View.Menus.kopiaZapasowaMenu;
 import static App.View.Menus.przerywnik;
 
 public class KopiaZapasowaController {
-    private EwidencjaPracownikow ewidencja;
-    private Scanner scanner;
+    private final Scanner scanner;
 
-    public KopiaZapasowaController(EwidencjaPracownikow ewidencja, Scanner scanner) {
-        this.ewidencja = ewidencja;
+    public KopiaZapasowaController(Scanner scanner) {
+        this.scanner = scanner;
     }
 
     public void kopiaZapasowa(){

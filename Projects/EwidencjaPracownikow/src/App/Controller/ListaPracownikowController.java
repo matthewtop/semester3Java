@@ -1,11 +1,17 @@
 package App.Controller;
 
-import App.Model.EwidencjaPracownikow;
+import java.util.Scanner;
 
 public class ListaPracownikowController {
-    private EwidencjaPracownikow ewidencja;
+    private Scanner scanner;
 
-    public ListaPracownikowController(EwidencjaPracownikow ewidencja){
-        this.ewidencja=ewidencja;
+    public ListaPracownikowController(Scanner scanner){
+        this.scanner=scanner;
+
+    }
+
+    public void listaPracownikow(){
+        System.out.println("dziala");
+        //todo
     }
 }
