@@ -1,4 +1,4 @@
-package EwidencjaPracownikow.View;
+package App.View;
 
 public class Errors {
 

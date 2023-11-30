@@ -1,4 +1,4 @@
-package EwidencjaPracownikow.View;
+package App.View;
 
 public class Menus {
     public static void mainMenu(){
@@ -9,7 +9,7 @@ public class Menus {
         System.out.println("   4.  Kopia zapasowa");
         System.out.println("   5.  Koniec pracy programu");
         System.out.println();
-        System.out.print("Wybor>");
+        System.out.print("Wybór>");
     }
 
     public static void dodajPracownikaMenu(){
@@ -17,10 +17,14 @@ public class Menus {
         System.out.println(" [D]yrektor/[H]andlowiec:     ");
     }
 
+    public static void przerywnik(){
+        System.out.println("-----------------------------------");
+    }
+
     public static void kopiaZapasowaMenu(){
         System.out.println("4.  Kopia zapasowa");
         System.out.println();
-        System.out.println("[Z]achowaj/[O]dtwórz        :       ");
+        System.out.print("[Z]achowaj/[O]dtwórz        :       ");
     }
 
     public static void kopiaZapasowaZachowajMenu(){
@@ -46,6 +50,10 @@ public class Menus {
         System.out.println("                                             [Pozycja: "   );
         System.out.println("[Enter] -  następny");
         System.out.println("[Q] - powrót");
+    }
+
+    public void wyborKompresji(){
+        System.out.print("Kompresja [G]zip/[Z]ip" );
     }
 
     public static void main(String[] args) {
