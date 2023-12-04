@@ -1,5 +1,6 @@
 package App.Controller;
 
+import App.Controller.FunctionControllers.*;
 import App.Model.EwidencjaPracownikow;
 import App.View.*;
 import java.util.Scanner;
@@ -13,14 +14,20 @@ public class MenuController {
 
     public MenuController(Scanner scanner){
         this.scanner = scanner;
+        init();
+    }
+
+    private void init(){
+        EwidencjaPracownikow ewidencja = new EwidencjaPracownikow();
+        ListaPracownikowView listaPracownikowView = new ListaPracownikowView(scanner);
+
+        listaPracownikowController =new ListaPracownikowController(scanner,ewidencja,listaPracownikowView);
+        dodajPracownikaController = new DodajPracownikaController(scanner,ewidencja);
+        usunPracownikaController = new UsunPracownikaController(scanner);
+        kopiaZapasowaController = new KopiaZapasowaController(scanner);
     }
 
     public void run(){
-        EwidencjaPracownikow ewidencja = new EwidencjaPracownikow();
-        listaPracownikowController = new ListaPracownikowController(scanner);
-        dodajPracownikaController = new DodajPracownikaController(scanner);
-        usunPracownikaController = new UsunPracownikaController(scanner);
-        kopiaZapasowaController = new KopiaZapasowaController(scanner);
         while (true){
             Menus.mainMenu();
             chooseMainOption();
@@ -29,14 +36,13 @@ public class MenuController {
 
     public void chooseMainOption(){
         int wybor=scanner.nextInt();
+        scanner.nextLine();
         switch (wybor){
             case 1:
-                listaPracownikowController.listaPracownikow();
-                //todo
+                listaPracownikowController.wyswietlListePracownikow();
                 break;
             case 2:
                 dodajPracownikaController.dodajPracownika();
-                //todo
                 break;
             case 3:
                 usunPracownikaController.usunPracownika();

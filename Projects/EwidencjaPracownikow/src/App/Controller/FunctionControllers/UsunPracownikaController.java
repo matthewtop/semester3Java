@@ -1,6 +1,4 @@
-package App.Controller;
-
-import App.Model.EwidencjaPracownikow;
+package App.Controller.FunctionControllers;
 
 import java.util.Scanner;
 

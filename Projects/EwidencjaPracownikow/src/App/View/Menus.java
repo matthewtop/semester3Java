@@ -14,7 +14,7 @@ public class Menus {
 
     public static void dodajPracownikaMenu(){
         System.out.println("2. Dodaj pracownika");
-        System.out.println(" [D]yrektor/[H]andlowiec:     ");
+        System.out.print(" [D]yrektor/[H]andlowiec:     ");
     }
 
     public static void przerywnik(){
@@ -36,21 +36,6 @@ public class Menus {
         System.out.println("[Q] - porzuć");
     }
 
-    public void listaPracownikowDyrektor(){
-        System.out.println("1. Lista pracowników ");
-        System.out.println("  Identyfikator PESEL           :");
-        System.out.println("  Imię:                         :");
-        System.out.println("  Nazwisko                      :");
-        System.out.println("  Wynagrodzenie:                :");
-        System.out.println("  Telefon służbowy numer        :");
-        System.out.println("  Dodatek służbowy (zł)         :");
-        System.out.println("  Karta służbowa numer          :");
-        System.out.println("  Limit kosztów/miesiąc(zł)     :");
-        System.out.println();
-        System.out.println("                                             [Pozycja: "   );
-        System.out.println("[Enter] -  następny");
-        System.out.println("[Q] - powrót");
-    }
 
     public void wyborKompresji(){
         System.out.print("Kompresja [G]zip/[Z]ip" );

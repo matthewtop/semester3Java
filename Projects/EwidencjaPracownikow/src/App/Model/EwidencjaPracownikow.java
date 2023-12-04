@@ -1,37 +1,25 @@
 package App.Model;
 
-import App.View.Errors;
-
 import java.util.ArrayList;
+import java.util.List;
 
 public class EwidencjaPracownikow {
-    private ArrayList<Pracownik> pracownicy = new ArrayList<>();
+    private final ArrayList<Pracownik> pracownicy = new ArrayList<>();
+
+    @Override
+    public String toString() {
+        return "EwidencjaPracownikow{" +
+                "pracownicy=" + pracownicy +
+                '}';
+    }
     public void dodajPracownika(Pracownik pracownik) {
         pracownicy.add(pracownik);
     }
 
-    public Pracownik znajdzPracownika(String pesel) {
-        for (Pracownik pracownik : pracownicy) {
-            if (pracownik.getPesel().equals(pesel)) {
-                return pracownik;
-            }
-            else {
-                Errors.pracownikNieIstniejeError();
-            }
-        }
-        return null;
+    public List<Pracownik> pobierzListePracownikow() {
+        return pracownicy;
     }
 
-    public void usunPracownika(String pesel){
-        pracownicy.remove(pesel);
-    }
 
-    public void zapiszDoPliku(String plik){
-        //todo
 
-    }
-
-    public void odczytajPlik(String plik){
-        //todo
-    }
 }

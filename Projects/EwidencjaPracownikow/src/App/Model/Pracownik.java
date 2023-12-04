@@ -3,10 +3,10 @@ package App.Model;
 import java.io.Serializable;
 
 public abstract class Pracownik implements Serializable {
-    private String imie;
-    private String nazwisko;
-    private String pesel;
-    private int wynagrodzenie;
+    private final String imie;
+    private final String nazwisko;
+    private final String pesel;
+    private final int wynagrodzenie;
 
     public Pracownik(String pesel, String imie, String nazwisko, int wynagrodzenie) {
         this.pesel = pesel;
@@ -15,25 +15,18 @@ public abstract class Pracownik implements Serializable {
         this.wynagrodzenie = wynagrodzenie;
     }
 
+    @Override
+    public String toString() {
+        return String.format("%s: %s %s, PESEL: %s, Wynagrodzenie: %d",
+                getClass().getSimpleName(), getImie(), getNazwisko(), getPesel(), getWynagrodzenie());
+    }
+
 
     public String getImie(){return imie;}
 
     public String getNazwisko(){return nazwisko;}
     public String getPesel(){return pesel;}
     public int getWynagrodzenie(){return wynagrodzenie;}
-
-    public void setImie(String newImie){this.imie=newImie;}
-    public void setNazwisko(String newNazwisko){this.nazwisko=newNazwisko;}
-    public void setWynagrodzenie(int newWynagrodzenie){this.wynagrodzenie=newWynagrodzenie;}
-
-    public void setPesel(String newPesel){this.pesel=newPesel;}
-
-
-    public void dodajPesel(String pesel){
-        //todo
-    }
-
-
 
 
 }

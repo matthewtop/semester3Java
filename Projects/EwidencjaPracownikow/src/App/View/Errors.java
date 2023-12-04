@@ -1,8 +1,6 @@
 package App.View;
 
 public class Errors {
-
-
     public static void zlyWyborError(){
         System.err.println("Nieprawidlowy wybor.");
     }
