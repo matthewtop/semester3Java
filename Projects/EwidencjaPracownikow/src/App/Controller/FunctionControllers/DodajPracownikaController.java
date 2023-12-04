@@ -4,20 +4,25 @@ package App.Controller.FunctionControllers;
 import App.Model.Dyrektor;
 import App.Model.EwidencjaPracownikow;
 import App.Model.Handlowiec;
+import App.Utils.PeselValidator;
 import App.View.Errors;
 import App.View.InputGetters;
 import App.View.Menus;
 
 import java.math.BigDecimal;
+import java.util.HashSet;
 import java.util.Scanner;
 
 public class DodajPracownikaController {
     private final Scanner scanner;
     private final EwidencjaPracownikow ewidencjaPracownikow;
+    private final PeselValidator peselValidator;
+    private final HashSet<String> pesels = new HashSet<>();
 
     public DodajPracownikaController(Scanner scanner, EwidencjaPracownikow ewidencjaPracownikow) {
         this.scanner =scanner;
         this.ewidencjaPracownikow= ewidencjaPracownikow;
+        this.peselValidator = new PeselValidator(pesels);
     }
 
     public void dodajPracownika(){
@@ -46,8 +51,12 @@ public class DodajPracownikaController {
         BigDecimal dodatekSluzbowy =getDodatekSluzbowy();
         String kartaSluzbowaNumer = getKartaSluzbowa();
         int limitKosztow = getLimitKosztow();
+
         Dyrektor dyrektor = new Dyrektor(pesel, imie, nazwisko, wynagrodzenie, telefonSluzbowy, dodatekSluzbowy, kartaSluzbowaNumer, limitKosztow);
         ewidencjaPracownikow.dodajPracownika(dyrektor);
+        pesels.add(pesel);
+
+        Menus.przerywnik();
     }
 
     public void dodajHandlowca(){
@@ -59,8 +68,11 @@ public class DodajPracownikaController {
         String telefonSluzbowy = getTelefonSluzbowy();
         BigDecimal prowizja = getProwizja();
         int limitProwizji= getLimitProwizji();
+
         Handlowiec handlowiec = new Handlowiec(pesel, imie, nazwisko, wynagrodzenie, telefonSluzbowy, prowizja, limitProwizji);
         ewidencjaPracownikow.dodajPracownika(handlowiec);
+        pesels.add(pesel);
+        Menus.przerywnik();
     }
     public int getLimitProwizji() {
         InputGetters.getLimitProwizji();
@@ -77,9 +89,16 @@ public class DodajPracownikaController {
         return scanner.next();
     }
 
-    public String getPesel(){
-        InputGetters.getPesel();
-        return scanner.next();
+    public String getPesel() {
+        String pesel;
+        do {
+            InputGetters.getPesel();
+            pesel = scanner.next();
+            if (!peselValidator.validatePesel(pesel)) {
+                Errors.zlyPeselError();
+            }
+        } while (!peselValidator.validatePesel(pesel));
+        return pesel;
     }
 
     public int getWynagrodzernie(){

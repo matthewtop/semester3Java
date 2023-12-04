@@ -10,7 +10,6 @@ import java.util.Scanner;
 public class ListaPracownikowView {
     private final Scanner scanner;
 
-
     public ListaPracownikowView(Scanner scanner){
         this.scanner=scanner;
     }
@@ -36,15 +35,15 @@ public class ListaPracownikowView {
 
     private void wyswietlDanePracownika(Pracownik pracownik, int pozycja, int total) {
         System.out.println("1. Lista pracowników");
-        System.out.println("Identyfikator PESEL : " + pracownik.getPesel());
-        System.out.println("Imię : " + pracownik.getImie());
-        System.out.println("Nazwisko : " + pracownik.getNazwisko());
-        System.out.println("Stanowisko : " + getStanowisko(pracownik));
-        System.out.println("Wynagrodzenie (zł) : " + pracownik.getWynagrodzenie());
-        System.out.println("Telefon służbowy numer : " + getTelefonSluzbowy(pracownik));
-        System.out.println("Dodatek służbowy (zł) : " + getDodatekSluzbowy(pracownik));
-        System.out.println("Karta służbowa numer : " + getKartaSluzbowa(pracownik));
-        System.out.println("Limit kosztów/miesiąc (zł) : " + getLimitKosztow(pracownik));
+        System.out.println("Identyfikator PESEL             : " + pracownik.getPesel());
+        System.out.println("Imię                            : " + pracownik.getImie());
+        System.out.println("Nazwisko                        : " + pracownik.getNazwisko());
+        System.out.println("Stanowisko                      : " + getStanowisko(pracownik));
+        System.out.println("Wynagrodzenie (zł)              : " + pracownik.getWynagrodzenie());
+        System.out.println("Telefon służbowy numer          : " + getTelefonSluzbowy(pracownik));
+        System.out.println("Dodatek służbowy (zł)           : " + getDodatekSluzbowy(pracownik));
+        System.out.println("Karta służbowa numer            : " + getKartaSluzbowa(pracownik));
+        System.out.println("Limit kosztów/miesiąc (zł)      : " + getLimitKosztow(pracownik));
         System.out.println(String.format("[Pozycja: %d/%d]", pozycja, total));
     }
 
@@ -57,11 +56,11 @@ public class ListaPracownikowView {
             return "mozliwosc pozniejszego rozszerzenia programu";         }
     }
 
-    private String getTelefonSluzbowy(Pracownik pracownik) {
+    public String getTelefonSluzbowy(Pracownik pracownik) {
         if (pracownik instanceof Dyrektor) {
             return ((Dyrektor) pracownik).getTelefonSluzbowy();
         } else if (pracownik instanceof Handlowiec) {
-            return "- brak -";
+            return ((Handlowiec) pracownik).getTelefonSluzbowy();
         } else {
             return "Brak informacji";
         }

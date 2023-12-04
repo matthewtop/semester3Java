@@ -18,7 +18,7 @@ public class Menus {
     }
 
     public static void przerywnik(){
-        System.out.println("-----------------------------------");
+        System.out.println("---------------------------------------------");
     }
 
     public static void kopiaZapasowaMenu(){
@@ -28,10 +28,10 @@ public class Menus {
     }
 
     public static void kopiaZapasowaZachowajMenu(){
-        System.out.println("------------------------------------------------");
+        przerywnik();
         System.out.println("Kompresja [G]zip/[Z]ip      :         ");
         System.out.println("Nazwa pliku                 :         ");
-        System.out.println("------------------------------------------------");
+        przerywnik();
         System.out.println("[Enter] - potwierdź");
         System.out.println("[Q] - porzuć");
     }
@@ -39,8 +39,5 @@ public class Menus {
 
     public void wyborKompresji(){
         System.out.print("Kompresja [G]zip/[Z]ip" );
-    }
-
-    public static void main(String[] args) {
     }
 }
