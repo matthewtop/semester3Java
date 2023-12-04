@@ -1,8 +1,14 @@
 package App.Controller;
 
-import App.Controller.FunctionControllers.*;
+import App.Controller.FunctionControllers.DodajPracownikaController;
+import App.Controller.FunctionControllers.KopiaZapasowaController;
+import App.Controller.FunctionControllers.ListaPracownikowController;
+import App.Controller.FunctionControllers.UsunPracownikaController;
 import App.Model.EwidencjaPracownikow;
-import App.View.*;
+import App.View.Errors;
+import App.View.ListaPracownikowView;
+import App.View.Menus;
+
 import java.util.Scanner;
 
 public class MenuController {
@@ -21,7 +27,7 @@ public class MenuController {
         EwidencjaPracownikow ewidencja = new EwidencjaPracownikow();
         ListaPracownikowView listaPracownikowView = new ListaPracownikowView(scanner);
 
-        listaPracownikowController =new ListaPracownikowController(scanner,ewidencja,listaPracownikowView);
+        listaPracownikowController =new ListaPracownikowController(ewidencja,listaPracownikowView);
         dodajPracownikaController = new DodajPracownikaController(scanner,ewidencja);
         usunPracownikaController = new UsunPracownikaController(scanner);
         kopiaZapasowaController = new KopiaZapasowaController(scanner);
@@ -29,12 +35,12 @@ public class MenuController {
 
     public void run(){
         while (true){
-            Menus.mainMenu();
             chooseMainOption();
         }
     }
 
     public void chooseMainOption(){
+        Menus.mainMenu();
         int wybor=scanner.nextInt();
         scanner.nextLine();
         switch (wybor){

@@ -1,7 +1,4 @@
 package App.View;
-
-import java.math.BigDecimal;
-
 public class InputGetters {
 
     public static void getLimitProwizji() {

@@ -3,7 +3,6 @@ package App.View;
 import App.Model.Dyrektor;
 import App.Model.Handlowiec;
 import App.Model.Pracownik;
-import App.View.Errors;
 
 import java.util.List;
 import java.util.Scanner;
