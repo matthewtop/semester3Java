@@ -1,6 +1,6 @@
 package App.Controller.FunctionControllers;
 
-import App.View.Errors;
+import App.View.Messages.Errors;
 
 import java.util.Scanner;
 

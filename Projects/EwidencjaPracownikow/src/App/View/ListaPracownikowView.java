@@ -3,6 +3,7 @@ package App.View;
 import App.Model.Dyrektor;
 import App.Model.Handlowiec;
 import App.Model.Pracownik;
+import App.View.Messages.Errors;
 
 import java.util.List;
 import java.util.Scanner;
@@ -25,7 +26,7 @@ public class ListaPracownikowView {
             String wybor = scanner.nextLine().toLowerCase();
             if (wybor.equals("q")) {
                 break;
-            } else if (wybor.equals("")) {
+            } else if (wybor.isEmpty()) {
                 pozycja++;
             } else {
                 Errors.zlyWyborError();
@@ -33,7 +34,7 @@ public class ListaPracownikowView {
         }
     }
 
-    private void wyswietlDanePracownika(Pracownik pracownik, int pozycja, int total) {
+    public void wyswietlDanePracownika(Pracownik pracownik, int pozycja, int total) {
         System.out.println("1. Lista pracowników");
         System.out.println("Identyfikator PESEL             : " + pracownik.getPesel());
         System.out.println("Imię                            : " + pracownik.getImie());

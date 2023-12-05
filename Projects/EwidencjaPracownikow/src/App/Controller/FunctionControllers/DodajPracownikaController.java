@@ -5,7 +5,7 @@ import App.Model.Dyrektor;
 import App.Model.EwidencjaPracownikow;
 import App.Model.Handlowiec;
 import App.Utils.PeselValidator;
-import App.View.Errors;
+import App.View.Messages.Errors;
 import App.View.InputGetters;
 import App.View.Menus;
 
@@ -41,37 +41,46 @@ public class DodajPracownikaController {
         }
     }
 
-    public void dodajDyrektora(){
+    public void dodajDyrektora() {
         Menus.przerywnik();
-        String pesel = getPesel();
-        String imie = getImie();
-        String nazwisko = getNazwisko();
-        int wynagrodzenie = getWynagrodzernie();
-        String telefonSluzbowy = getTelefonSluzbowy();
-        BigDecimal dodatekSluzbowy =getDodatekSluzbowy();
-        String kartaSluzbowaNumer = getKartaSluzbowa();
-        int limitKosztow = getLimitKosztow();
+        try {
+            String pesel = getPesel();
+            String imie = getImie();
+            String nazwisko = getNazwisko();
+            int wynagrodzenie = getWynagrodzernie();
+            String telefonSluzbowy = getTelefonSluzbowy();
+            BigDecimal dodatekSluzbowy = getDodatekSluzbowy();
+            String kartaSluzbowaNumer = getKartaSluzbowa();
+            int limitKosztow = getLimitKosztow();
 
-        Dyrektor dyrektor = new Dyrektor(pesel, imie, nazwisko, wynagrodzenie, telefonSluzbowy, dodatekSluzbowy, kartaSluzbowaNumer, limitKosztow);
-        ewidencjaPracownikow.dodajPracownika(dyrektor);
-        pesels.add(pesel);
+            Dyrektor dyrektor = new Dyrektor(pesel, imie, nazwisko, wynagrodzenie, telefonSluzbowy, dodatekSluzbowy, kartaSluzbowaNumer, limitKosztow);
+            ewidencjaPracownikow.dodajPracownika(dyrektor);
+            pesels.add(pesel);
+        } catch (Exception e) {
+            Errors.zlyPeselError();
+        }
 
         Menus.przerywnik();
     }
 
-    public void dodajHandlowca(){
+    public void dodajHandlowca() {
         Menus.przerywnik();
-        String pesel = getPesel();
-        String imie = getImie();
-        String nazwisko = getNazwisko();
-        int wynagrodzenie = getWynagrodzernie();
-        String telefonSluzbowy = getTelefonSluzbowy();
-        BigDecimal prowizja = getProwizja();
-        int limitProwizji= getLimitProwizji();
+        try {
+            String pesel = getPesel();
+            String imie = getImie();
+            String nazwisko = getNazwisko();
+            int wynagrodzenie = getWynagrodzernie();
+            String telefonSluzbowy = getTelefonSluzbowy();
+            BigDecimal prowizja = getProwizja();
+            int limitProwizji = getLimitProwizji();
 
-        Handlowiec handlowiec = new Handlowiec(pesel, imie, nazwisko, wynagrodzenie, telefonSluzbowy, prowizja, limitProwizji);
-        ewidencjaPracownikow.dodajPracownika(handlowiec);
-        pesels.add(pesel);
+            Handlowiec handlowiec = new Handlowiec(pesel, imie, nazwisko, wynagrodzenie, telefonSluzbowy, prowizja, limitProwizji);
+            ewidencjaPracownikow.dodajPracownika(handlowiec);
+            pesels.add(pesel);
+        } catch (Exception e) {
+            Errors.zlyPeselError();
+        }
+
         Menus.przerywnik();
     }
     public int getLimitProwizji() {

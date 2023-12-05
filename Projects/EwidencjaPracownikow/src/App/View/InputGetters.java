@@ -23,4 +23,6 @@ public class InputGetters {
     public static void getLimitKosztow(){
         System.out.print("Limit kosztów/miesiąc (zł)      : ");
     }
+
+
 }

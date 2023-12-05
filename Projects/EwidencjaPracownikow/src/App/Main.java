@@ -12,8 +12,7 @@ public class Main {
 
         controller.run();
     }
-
-//    przylkadowe pesele
+//    przykladowe pesele
 //    67022327618
 //    58013039977
 //    05230877299

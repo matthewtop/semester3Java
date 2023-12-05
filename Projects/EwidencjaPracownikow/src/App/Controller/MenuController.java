@@ -5,7 +5,7 @@ import App.Controller.FunctionControllers.KopiaZapasowaController;
 import App.Controller.FunctionControllers.ListaPracownikowController;
 import App.Controller.FunctionControllers.UsunPracownikaController;
 import App.Model.EwidencjaPracownikow;
-import App.View.Errors;
+import App.View.Messages.Errors;
 import App.View.ListaPracownikowView;
 import App.View.Menus;
 
@@ -24,13 +24,17 @@ public class MenuController {
     }
 
     private void init(){
-        EwidencjaPracownikow ewidencja = new EwidencjaPracownikow();
-        ListaPracownikowView listaPracownikowView = new ListaPracownikowView(scanner);
+        try {
+            EwidencjaPracownikow ewidencja = new EwidencjaPracownikow();
+            ListaPracownikowView listaPracownikowView = new ListaPracownikowView(scanner);
 
-        listaPracownikowController =new ListaPracownikowController(ewidencja,listaPracownikowView);
-        dodajPracownikaController = new DodajPracownikaController(scanner,ewidencja);
-        usunPracownikaController = new UsunPracownikaController(scanner);
-        kopiaZapasowaController = new KopiaZapasowaController(scanner);
+            listaPracownikowController = new ListaPracownikowController(ewidencja, listaPracownikowView);
+            dodajPracownikaController = new DodajPracownikaController(scanner, ewidencja);
+            usunPracownikaController = new UsunPracownikaController(scanner, ewidencja, listaPracownikowView);
+            kopiaZapasowaController = new KopiaZapasowaController(scanner);
+        } catch (Exception e) {
+            Errors.bladInicjalizacjiError();
+        }
     }
 
     public void run(){
@@ -66,10 +70,4 @@ public class MenuController {
                 break;
         }
     }
-
-
-
-
-
-
 }

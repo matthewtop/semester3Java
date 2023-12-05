@@ -1,6 +1,9 @@
 package App.Model;
 
+import App.View.Messages.Errors;
+
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 public class EwidencjaPracownikow {
@@ -18,6 +21,31 @@ public class EwidencjaPracownikow {
 
     public List<Pracownik> pobierzListePracownikow() {
         return pracownicy;
+    }
+
+    public Pracownik pobierzPracownika(String pesel) {
+        try {
+            for (Pracownik pracownik : pracownicy) {
+                if (pracownik.getPesel().equals(pesel)) {
+                    return pracownik;
+                }
+            }
+        } catch (Exception e) {
+            Errors.pracownikNieIstniejeError();
+        }
+        return null;
+    }
+
+    public boolean usunPracownika(String pesel) {
+        Iterator<Pracownik> iterator = pracownicy.iterator();
+        while (iterator.hasNext()) {
+            Pracownik pracownik = iterator.next();
+            if (pracownik.getPesel().equals(pesel)) {
+                iterator.remove();
+                return true;
+            }
+        }
+        return false;
     }
 
 
