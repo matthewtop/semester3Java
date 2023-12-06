@@ -56,10 +56,8 @@ public class MenuController {
                 break;
             case 3:
                 usunPracownikaController.usunPracownika();
-                //todo
                 break;
             case 4:
-                //todo
                 kopiaZapasowaController.kopiaZapasowa();
                 break;
             case 5:

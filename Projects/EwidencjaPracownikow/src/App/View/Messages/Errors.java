@@ -16,6 +16,8 @@ public class Errors {
 
     public static void bladInicjalizacjiError(){System.err.println("Wystapil blad podczas inicializacji.");}
 
+    public static void niepoprawnyFormatError(){System.err.println("Niepoprawny format.");}
+
 
 
 }

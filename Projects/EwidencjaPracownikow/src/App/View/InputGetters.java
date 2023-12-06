@@ -1,9 +1,7 @@
 package App.View;
 public class InputGetters {
 
-    public static void getLimitProwizji() {
-        System.out.print("Limit prowizji                  : ");
-    }
+    public static void getLimitProwizji() {System.out.print("Limit prowizji                  : ");}
     public static void getImie() {
         System.out.print("Imię                            : ");
     }

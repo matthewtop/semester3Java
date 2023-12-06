@@ -1,9 +1,10 @@
 package App.Controller.FunctionControllers;
 
-
 import App.Model.Dyrektor;
 import App.Model.EwidencjaPracownikow;
 import App.Model.Handlowiec;
+import App.Utils.NameAndSurnameValidator;
+
 import App.Utils.PeselValidator;
 import App.View.Messages.Errors;
 import App.View.InputGetters;
@@ -59,7 +60,6 @@ public class DodajPracownikaController {
         } catch (Exception e) {
             Errors.zlyPeselError();
         }
-
         Menus.przerywnik();
     }
 
@@ -80,7 +80,6 @@ public class DodajPracownikaController {
         } catch (Exception e) {
             Errors.zlyPeselError();
         }
-
         Menus.przerywnik();
     }
     public int getLimitProwizji() {
@@ -88,14 +87,28 @@ public class DodajPracownikaController {
         return scanner.nextInt();
     }
 
-    public String getImie(){
-        InputGetters.getImie();
-        return scanner.next();
+    public String getImie() {
+        String imie;
+        do {
+            InputGetters.getImie();
+            imie = scanner.next();
+            if (!NameAndSurnameValidator.validateName(imie)) {
+                Errors.niepoprawnyFormatError();
+            }
+        } while (!NameAndSurnameValidator.validateName(imie));
+        return imie;
     }
 
     public String getNazwisko(){
-        InputGetters.getNazwisko();
-        return scanner.next();
+        String nazwisko;
+        do{
+            InputGetters.getNazwisko();
+            nazwisko= scanner.next();
+            if(!NameAndSurnameValidator.validateSurname(nazwisko)){
+                Errors.niepoprawnyFormatError();
+            }
+        }while (!NameAndSurnameValidator.validateSurname(nazwisko));
+        return nazwisko;
     }
 
     public String getPesel() {
