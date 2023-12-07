@@ -31,7 +31,7 @@ public class MenuController {
             listaPracownikowController = new ListaPracownikowController(ewidencja, listaPracownikowView);
             dodajPracownikaController = new DodajPracownikaController(scanner, ewidencja);
             usunPracownikaController = new UsunPracownikaController(scanner, ewidencja, listaPracownikowView);
-            kopiaZapasowaController = new KopiaZapasowaController(scanner);
+            kopiaZapasowaController = new KopiaZapasowaController(scanner, ewidencja);
         } catch (Exception e) {
             Errors.bladInicjalizacjiError();
         }
@@ -58,7 +58,7 @@ public class MenuController {
                 usunPracownikaController.usunPracownika();
                 break;
             case 4:
-                kopiaZapasowaController.kopiaZapasowa();
+                kopiaZapasowaController.kopiaZapasowaZachowajOdtworz();
                 break;
             case 5:
                 System.exit(0);

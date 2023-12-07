@@ -4,11 +4,7 @@ import java.util.Set;
 
 public class PeselValidator {
     private final Set<String> pesels;
-
-    public PeselValidator(Set<String> pesels) {
-        this.pesels = pesels;
-    }
-
+    public PeselValidator(Set<String> pesels) {this.pesels = pesels;}
     public boolean validatePesel(String pesel){
         if(pesel.length()!=11){
             return false;

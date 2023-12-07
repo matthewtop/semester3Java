@@ -26,18 +26,7 @@ public class Menus {
         System.out.println();
         System.out.print("[Z]achowaj/[O]dtwórz        :       ");
     }
-
-    public static void kopiaZapasowaZachowajMenu(){
-        przerywnik();
-        System.out.println("Kompresja [G]zip/[Z]ip      :         ");
-        System.out.println("Nazwa pliku                 :         ");
-        przerywnik();
-        System.out.println("[Enter] - potwierdź");
-        System.out.println("[Q] - porzuć");
-    }
-
-
-    public void wyborKompresji(){
+    public static void wyborKompresji(){
         System.out.print("Kompresja [G]zip/[Z]ip" );
     }
 }

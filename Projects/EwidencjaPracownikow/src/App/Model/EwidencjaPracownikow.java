@@ -2,11 +2,12 @@ package App.Model;
 
 import App.View.Messages.Errors;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-public class EwidencjaPracownikow {
+public class EwidencjaPracownikow implements Serializable {
     private final ArrayList<Pracownik> pracownicy = new ArrayList<>();
 
     @Override

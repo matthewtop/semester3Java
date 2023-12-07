@@ -21,9 +21,7 @@ public abstract class Pracownik implements Serializable {
                 getClass().getSimpleName(), getImie(), getNazwisko(), getPesel(), getWynagrodzenie());
     }
 
-
     public String getImie(){return imie;}
-
     public String getNazwisko(){return nazwisko;}
     public String getPesel(){return pesel;}
     public int getWynagrodzenie(){return wynagrodzenie;}
