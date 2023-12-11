@@ -9,9 +9,10 @@ import App.View.Messages.Errors;
 import App.View.ListaPracownikowView;
 import App.View.Menus;
 
+import java.io.Serializable;
 import java.util.Scanner;
 
-public class MenuController {
+public class MenuController implements Serializable {
     private final Scanner scanner;
     private DodajPracownikaController dodajPracownikaController;
     private UsunPracownikaController usunPracownikaController;

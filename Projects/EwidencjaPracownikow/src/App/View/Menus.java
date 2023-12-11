@@ -27,6 +27,8 @@ public class Menus {
         System.out.print("[Z]achowaj/[O]dtwórz        :       ");
     }
     public static void wyborKompresji(){
-        System.out.print("Kompresja [G]zip/[Z]ip" );
+        System.out.print("Kompresja [G]zip/[Z]ip      :       ");
     }
+
+
 }

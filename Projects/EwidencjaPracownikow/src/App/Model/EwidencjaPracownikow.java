@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-public class EwidencjaPracownikow implements Serializable {
+public class EwidencjaPracownikow implements Serializable{
     private final ArrayList<Pracownik> pracownicy = new ArrayList<>();
 
     @Override
@@ -47,6 +47,11 @@ public class EwidencjaPracownikow implements Serializable {
             }
         }
         return false;
+    }
+
+    public void setPracownicy(List<Pracownik> pracownicy) {
+        this.pracownicy.clear();
+        this.pracownicy.addAll(pracownicy);
     }
 
 

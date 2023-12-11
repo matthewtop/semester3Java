@@ -1,8 +1,9 @@
 package App.Model;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 
-public class Handlowiec extends Pracownik {
+public class Handlowiec extends Pracownik implements Serializable {
     private final int limitProwizji;
     private final String telefonSluzbowy;
     private final BigDecimal stawkaProwizji;

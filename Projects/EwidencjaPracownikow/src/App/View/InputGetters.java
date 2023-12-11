@@ -1,4 +1,7 @@
 package App.View;
+
+import java.util.Scanner;
+
 public class InputGetters {
 
     public static void getLimitProwizji() {System.out.print("Limit prowizji                  : ");}
@@ -11,5 +14,10 @@ public class InputGetters {
     public static void getDodatekSluzbowy(){System.out.print("Dodatek służbowy (zł)           : ");}
     public static void getKartaSluzbowa(){System.out.print("Karta służbowa numer            : ");}
     public static void getLimitKosztow(){System.out.print("Limit kosztów/miesiąc (zł)      : ");}
+
+    public static String podajNazwePliku(Scanner scanner) {
+        System.out.println("Podaj nazwę pliku        : ");
+        return scanner.next();
+    }
 
 }
