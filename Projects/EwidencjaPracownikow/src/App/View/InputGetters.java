@@ -15,9 +15,4 @@ public class InputGetters {
     public static void getKartaSluzbowa(){System.out.print("Karta służbowa numer            : ");}
     public static void getLimitKosztow(){System.out.print("Limit kosztów/miesiąc (zł)      : ");}
 
-    public static String podajNazwePliku(Scanner scanner) {
-        System.out.println("Podaj nazwę pliku        : ");
-        return scanner.next();
-    }
-
 }

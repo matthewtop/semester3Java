@@ -8,5 +8,6 @@ public class Errors {
     public static void bladPodczasUsuwania(){System.err.println("Wystapil blad podczas usuwania.");}
     public static void bladInicjalizacjiError(){System.err.println("Wystapil blad podczas inicializacji.");}
     public static void niepoprawnyFormatError(){System.err.println("Niepoprawny format.");}
-    public static void bladIOError(){System.err.println("Wystapil blad podczas zapisu.");}
+    public static void IOError(){System.err.println("Wystapil blad podczas zapisu.");}
+    public static void zlyFormatDanychError(){System.err.println("Zly format danych.");}
 }

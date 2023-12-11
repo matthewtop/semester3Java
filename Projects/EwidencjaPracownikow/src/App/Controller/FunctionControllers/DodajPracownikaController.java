@@ -4,14 +4,14 @@ import App.Model.Dyrektor;
 import App.Model.EwidencjaPracownikow;
 import App.Model.Handlowiec;
 import App.Utils.NameAndSurnameValidator;
-
 import App.Utils.PeselValidator;
-import App.View.Messages.Errors;
 import App.View.InputGetters;
 import App.View.Menus;
+import App.View.Messages.Errors;
 
 import java.math.BigDecimal;
 import java.util.HashSet;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class DodajPracownikaController {
@@ -28,12 +28,12 @@ public class DodajPracownikaController {
 
     public void dodajPracownika(){
         Menus.dodajPracownikaMenu();
-        String wybor=scanner.next();
+        String wybor=scanner.nextLine().toLowerCase();
         switch (wybor){
-            case "d", "D":
+            case "d":
                 dodajDyrektora();
                 break;
-            case "h", "H":
+            case "h":
                 dodajHandlowca();
                 break;
             default:
@@ -48,7 +48,7 @@ public class DodajPracownikaController {
             String pesel = getPesel();
             String imie = getImie();
             String nazwisko = getNazwisko();
-            int wynagrodzenie = getWynagrodzernie();
+            int wynagrodzenie = getWynagrodzenie();
             String telefonSluzbowy = getTelefonSluzbowy();
             BigDecimal dodatekSluzbowy = getDodatekSluzbowy();
             String kartaSluzbowaNumer = getKartaSluzbowa();
@@ -69,7 +69,7 @@ public class DodajPracownikaController {
             String pesel = getPesel();
             String imie = getImie();
             String nazwisko = getNazwisko();
-            int wynagrodzenie = getWynagrodzernie();
+            int wynagrodzenie = getWynagrodzenie();
             String telefonSluzbowy = getTelefonSluzbowy();
             BigDecimal prowizja = getProwizja();
             int limitProwizji = getLimitProwizji();
@@ -123,34 +123,64 @@ public class DodajPracownikaController {
         return pesel;
     }
 
-    public int getWynagrodzernie(){
-        InputGetters.getWynagrodzenie();
-        return scanner.nextInt();
+    public int getWynagrodzenie() {
+        try {
+            InputGetters.getWynagrodzenie();
+            return scanner.nextInt();
+        } catch (InputMismatchException e) {
+            Errors.zlyFormatDanychError();
+            scanner.next();
+            return getWynagrodzenie();
+        }
     }
-
     public String getTelefonSluzbowy(){
-        InputGetters.getTelefonSluzbowy();
-        return scanner.next();
+        try {
+            InputGetters.getTelefonSluzbowy();
+            return scanner.next();
+        } catch (InputMismatchException e) {
+            Errors.zlyFormatDanychError();
+            scanner.next();
+            return getTelefonSluzbowy();
+        }
     }
     public BigDecimal getProwizja(){
-        InputGetters.getProwizja();
-        return BigDecimal.valueOf(scanner.nextInt());
+        try {
+            InputGetters.getProwizja();
+            return BigDecimal.valueOf(scanner.nextInt());
+        } catch (InputMismatchException e) {
+            Errors.zlyFormatDanychError();
+            scanner.next();
+            return BigDecimal.valueOf(scanner.nextInt());
+        }
     }
-
     public BigDecimal getDodatekSluzbowy(){
-        InputGetters.getDodatekSluzbowy();
-        return scanner.nextBigDecimal();
+        try {
+            InputGetters.getDodatekSluzbowy();
+            return BigDecimal.valueOf(scanner.nextInt());
+        } catch (InputMismatchException e) {
+            Errors.zlyFormatDanychError();
+            scanner.next();
+            return BigDecimal.valueOf(scanner.nextInt());
+        }
     }
-
     public String getKartaSluzbowa(){
-        InputGetters.getKartaSluzbowa();
-        return scanner.next();
+        try{
+            InputGetters.getKartaSluzbowa();
+            return scanner.next();
+        }catch (InputMismatchException e){
+            Errors.zlyFormatDanychError();
+            scanner.next();
+            return getKartaSluzbowa();
+        }
     }
-
     public int getLimitKosztow(){
-        InputGetters.getLimitKosztow();
-        return scanner.nextInt();
+        try {
+            InputGetters.getLimitKosztow();
+            return scanner.nextInt();
+        }catch (InputMismatchException e) {
+            Errors.zlyFormatDanychError();
+            scanner.next();
+            return getLimitKosztow();
+        }
     }
-
-
 }

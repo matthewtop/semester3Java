@@ -54,6 +54,4 @@ public class EwidencjaPracownikow implements Serializable{
         this.pracownicy.addAll(pracownicy);
     }
 
-
-
 }

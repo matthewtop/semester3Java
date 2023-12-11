@@ -20,8 +20,9 @@ public class ListaPracownikowView {
 
         while (pozycja < total) {
             wyswietlDanePracownika(pracownicy.get(pozycja), pozycja + 1, total);
-            System.out.println("[Enter] – następny");
-            System.out.println("[Q] – powrót");
+
+            System.out.println("                            [Enter] – następny");
+            System.out.println("                            [Q] – powrót");
 
             String wybor = scanner.nextLine().toLowerCase();
             if (wybor.equals("q")) {

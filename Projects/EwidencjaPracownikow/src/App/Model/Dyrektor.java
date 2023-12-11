@@ -24,7 +24,6 @@ public class Dyrektor extends Pracownik implements Serializable {
                 getImie(), getNazwisko(), getPesel(), getWynagrodzenie(), telefonSluzbowy);
     }
 
-
     public String getTelefonSluzbowy() {
         return telefonSluzbowy;
     }

@@ -3,10 +3,10 @@ package App.Model;
 import java.io.Serializable;
 
 public abstract class Pracownik implements Serializable {
-    private final String imie;
-    private final String nazwisko;
-    private final String pesel;
-    private final int wynagrodzenie;
+    private String imie;
+    private String nazwisko;
+    private String pesel;
+    private int wynagrodzenie;
 
     public Pracownik(String pesel, String imie, String nazwisko, int wynagrodzenie) {
         this.pesel = pesel;
@@ -25,6 +25,8 @@ public abstract class Pracownik implements Serializable {
     public String getNazwisko(){return nazwisko;}
     public String getPesel(){return pesel;}
     public int getWynagrodzenie(){return wynagrodzenie;}
+
+
 
 
 }

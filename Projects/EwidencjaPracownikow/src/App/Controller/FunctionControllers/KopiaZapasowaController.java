@@ -25,7 +25,6 @@ public class KopiaZapasowaController {
         String wybor = scanner.next();
         switch (wybor.toLowerCase()) {
             case "z":
-                // zachowaj
                 przerywnik();
                 wyborKopiaZapasowa();
                 break;
@@ -93,7 +92,6 @@ public class KopiaZapasowaController {
             Object obj = ois.readObject();
             if (obj instanceof EwidencjaPracownikow) {
                 EwidencjaPracownikow odtworzonaEwidencja = (EwidencjaPracownikow) obj;
-                // Clear the existing data and set the new data
                 ewidencjaPracownikow.setPracownicy(odtworzonaEwidencja.pobierzListePracownikow());
                 System.out.println("Odtworzono kopię zapasową z pliku " + nazwaPliku);
             } else {
@@ -174,6 +172,6 @@ public class KopiaZapasowaController {
 
     private void handleIOException(IOException e) {
         e.printStackTrace();
-        Errors.bladIOError();
+        Errors.IOError();
     }
 }
