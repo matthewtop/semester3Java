@@ -10,6 +10,7 @@ import java.util.List;
 public class EwidencjaPracownikow implements Serializable{
     private final ArrayList<Pracownik> pracownicy = new ArrayList<>();
 
+
     @Override
     public String toString() {
         return "EwidencjaPracownikow{" +
