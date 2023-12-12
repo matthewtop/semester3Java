@@ -3,6 +3,7 @@ package App.Controller.FunctionControllers;
 import App.Model.EwidencjaPracownikow;
 import App.View.Menus;
 import App.View.Messages.Errors;
+import App.View.Messages.Infos;
 
 import java.io.*;
 import java.util.Scanner;
@@ -81,17 +82,18 @@ public class KopiaZapasowaController {
     public void zapiszKopieZapasowa(String nazwaPliku) {
         try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("kopia.ser"))) {
             oos.writeObject(ewidencjaPracownikow);
-            System.out.println("Kopia zapasowa została zapisana do pliku " + nazwaPliku);
+            Infos.kopiaZapisanaInfo(nazwaPliku);
         } catch (IOException e) {
             handleIOException(e);
         }
     }
 
+
+
     public void odczytajKopieZapasowa(String nazwaPliku) {
         try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(nazwaPliku))) {
             Object obj = ois.readObject();
-            if (obj instanceof EwidencjaPracownikow) {
-                EwidencjaPracownikow odtworzonaEwidencja = (EwidencjaPracownikow) obj;
+            if (obj instanceof EwidencjaPracownikow odtworzonaEwidencja) {
                 ewidencjaPracownikow.setPracownicy(odtworzonaEwidencja.pobierzListePracownikow());
                 System.out.println("Odtworzono kopię zapasową z pliku " + nazwaPliku);
             } else {
@@ -106,7 +108,7 @@ public class KopiaZapasowaController {
 
     public void kopiaZip(String nazwaPliku) {
         try (ZipOutputStream zos = new ZipOutputStream(new FileOutputStream("kopia.zip"))) {
-            ZipEntry entry = new ZipEntry("kopia.ser");
+            ZipEntry entry = new ZipEntry(nazwaPliku);
             zos.putNextEntry(entry);
 
             try (ObjectOutputStream oos = new ObjectOutputStream(zos)) {
@@ -125,8 +127,7 @@ public class KopiaZapasowaController {
             if (entry != null && entry.getName().equals("kopia.ser")) {
                 try (ObjectInputStream ois = new ObjectInputStream(zis)) {
                     Object obj = ois.readObject();
-                    if (obj instanceof EwidencjaPracownikow) {
-                        EwidencjaPracownikow odtworzonaEwidencja = (EwidencjaPracownikow) obj;
+                    if (obj instanceof EwidencjaPracownikow odtworzonaEwidencja) {
                         ewidencjaPracownikow.setPracownicy(odtworzonaEwidencja.pobierzListePracownikow());
                         System.out.println("Odtworzono kopię zapasową z pliku " + nazwaPlikuZip);
                     } else {
@@ -137,6 +138,7 @@ public class KopiaZapasowaController {
                 System.out.println("Błąd: Brak pliku 'kopia.ser' w archiwum ZIP.");
             }
         } catch (IOException | ClassNotFoundException e) {
+            assert e instanceof IOException;
             handleIOException((IOException) e);
         }
     }
@@ -156,14 +158,14 @@ public class KopiaZapasowaController {
              ObjectInputStream ois = new ObjectInputStream(gzis)) {
 
             Object obj = ois.readObject();
-            if (obj instanceof EwidencjaPracownikow) {
-                EwidencjaPracownikow odtworzonaEwidencja = (EwidencjaPracownikow) obj;
+            if (obj instanceof EwidencjaPracownikow odtworzonaEwidencja) {
                 ewidencjaPracownikow.setPracownicy(odtworzonaEwidencja.pobierzListePracownikow());
                 System.out.println("Odtworzono kopię zapasową z pliku " + nazwaPliku);
             } else {
                 System.out.println("Błąd: Niepoprawny format pliku GZIP.");
             }
         } catch (IOException | ClassNotFoundException e) {
+            assert e instanceof IOException;
             handleIOException((IOException) e);
         }
     }
