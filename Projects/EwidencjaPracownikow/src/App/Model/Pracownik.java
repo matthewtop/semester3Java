@@ -1,6 +1,7 @@
 package App.Model;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 
 public abstract class Pracownik implements Serializable {
     private final String imie;
@@ -26,7 +27,9 @@ public abstract class Pracownik implements Serializable {
     public String getPesel(){return pesel;}
     public int getWynagrodzenie(){return wynagrodzenie;}
 
+    public abstract String getTelefonSluzbowy();
 
-
-
+    public abstract BigDecimal getDodatekSluzbowy();
+    public abstract String getKartaSluzbowaNumer();
+    public abstract int getLimitKosztow();
 }

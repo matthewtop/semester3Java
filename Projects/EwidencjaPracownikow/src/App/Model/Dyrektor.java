@@ -21,21 +21,25 @@ public class Dyrektor extends Pracownik implements Serializable {
     @Override
     public String toString() {
         return String.format("Dyrektor: %s %s, PESEL: %s, Wynagrodzenie: %d, Telefon służbowy: %s",
-                getImie(), getNazwisko(), getPesel(), getWynagrodzenie(), telefonSluzbowy);
+                getImie(), getNazwisko(), getPesel(), getWynagrodzenie(), getTelefonSluzbowy());
     }
 
+    @Override
     public String getTelefonSluzbowy() {
         return telefonSluzbowy;
     }
 
+    @Override
     public BigDecimal getDodatekSluzbowy() {
         return dodatekSluzbowy;
     }
 
+    @Override
     public String getKartaSluzbowaNumer() {
         return kartaSluzbowaNumer;
     }
 
+    @Override
     public int getLimitKosztow() {
         return limitKosztow;
     }

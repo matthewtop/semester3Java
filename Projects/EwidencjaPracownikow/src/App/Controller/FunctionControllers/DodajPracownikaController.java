@@ -81,7 +81,6 @@ public class DodajPracownikaController {
         Menus.przerywnik();
     }
 
-
     public String getPesel() {
         String pesel;
         do {
@@ -93,5 +92,4 @@ public class DodajPracownikaController {
         } while (!peselValidator.validatePesel(pesel));
         return pesel;
     }
-
 }

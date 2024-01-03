@@ -49,7 +49,7 @@ public class ListaPracownikowView {
             System.out.println("Karta służbowa numer            : " + getKartaSluzbowa(pracownik));
         }
         System.out.println("Limit kosztów/miesiąc (zł)      : " + getLimitKosztow(pracownik));
-        System.out.println(String.format("[Pozycja: %d/%d]", pozycja, total));
+        System.out.printf("[Pozycja: %d/%d]%n", pozycja, total);
     }
 
     private String getStanowisko(Pracownik pracownik) {
@@ -63,9 +63,9 @@ public class ListaPracownikowView {
 
     public String getTelefonSluzbowy(Pracownik pracownik) {
         if (pracownik instanceof Dyrektor) {
-            return ((Dyrektor) pracownik).getTelefonSluzbowy();
+            return pracownik.getTelefonSluzbowy();
         } else if (pracownik instanceof Handlowiec) {
-            return ((Handlowiec) pracownik).getTelefonSluzbowy();
+            return pracownik.getTelefonSluzbowy();
         } else {
             return "Brak informacji";
         }
@@ -73,7 +73,7 @@ public class ListaPracownikowView {
 
     private String getDodatekSluzbowy(Pracownik pracownik) {
         if (pracownik instanceof Dyrektor) {
-            return ((Dyrektor) pracownik).getDodatekSluzbowy().toString();
+            return pracownik.getDodatekSluzbowy().toString();
         } else if (pracownik instanceof Handlowiec) {
             return ((Handlowiec) pracownik).getProwizja().toString();
         } else {
@@ -83,7 +83,7 @@ public class ListaPracownikowView {
 
     private String getKartaSluzbowa(Pracownik pracownik) {
         if (pracownik instanceof Dyrektor) {
-            return ((Dyrektor) pracownik).getKartaSluzbowaNumer();
+            return pracownik.getKartaSluzbowaNumer();
         } else if (pracownik instanceof Handlowiec) {
             return "Brak informacji";
         } else {
@@ -93,7 +93,7 @@ public class ListaPracownikowView {
 
     private String getLimitKosztow(Pracownik pracownik) {
         if (pracownik instanceof Dyrektor) {
-            return String.valueOf(((Dyrektor) pracownik).getLimitKosztow());
+            return String.valueOf(pracownik.getLimitKosztow());
         } else if (pracownik instanceof Handlowiec) {
             int limitProwizji = ((Handlowiec) pracownik).getLimitProwizji();
             return limitProwizji != 0 ? String.valueOf(limitProwizji) : "Brak informacji";
@@ -101,6 +101,4 @@ public class ListaPracownikowView {
             return "Brak informacji";
         }
     }
-
-
 }

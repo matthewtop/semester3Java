@@ -16,11 +16,28 @@ public class Handlowiec extends Pracownik implements Serializable {
         this.stawkaProwizji= stawkaProwizji;
     }
 
+    @Override
     public String getTelefonSluzbowy() {return telefonSluzbowy;}
-    public BigDecimal getProwizja() {return stawkaProwizji;
+
+    @Override
+    public BigDecimal getDodatekSluzbowy() {
+        return null;
     }
+
+    @Override
+    public String getKartaSluzbowaNumer() {
+        return null;
+    }
+
+    @Override
+    public int getLimitKosztow() {
+        return 0;
+    }
+
+    public BigDecimal getProwizja() {return stawkaProwizji;}
     public int getLimitProwizji() {
         return limitProwizji;
     }
+
 
 }

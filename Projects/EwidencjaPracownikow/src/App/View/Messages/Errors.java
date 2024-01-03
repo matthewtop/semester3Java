@@ -9,7 +9,6 @@ public class Errors {
     public static void bladInicjalizacjiError(){System.err.println("Wystapil blad podczas inicializacji.");}
     public static void niepoprawnyFormatError(){System.err.println("Niepoprawny format.");}
     public static void zlyFormatDanychError(){System.err.println("Zly format danych.");}
-    public static void brakBlikuError(){System.err.println("Brak pliku.");}
     public static void cosPoszloNieTakError(){System.err.println("Cos poszlo nie tak.");}
 
 }

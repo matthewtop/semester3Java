@@ -11,6 +11,8 @@ import App.View.Menus;
 
 import java.io.Serializable;
 import java.util.Scanner;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 public class MenuController implements Serializable {
     private final Scanner scanner;
@@ -18,6 +20,7 @@ public class MenuController implements Serializable {
     private UsunPracownikaController usunPracownikaController;
     private KopiaZapasowaController kopiaZapasowaController;
     private ListaPracownikowController listaPracownikowController;
+    private ExecutorService executor;
 
     public MenuController(Scanner scanner){
         this.scanner = scanner;
@@ -29,10 +32,12 @@ public class MenuController implements Serializable {
             EwidencjaPracownikow ewidencja = new EwidencjaPracownikow();
             ListaPracownikowView listaPracownikowView = new ListaPracownikowView(scanner);
 
+            executor= Executors.newFixedThreadPool(5);
+
             listaPracownikowController = new ListaPracownikowController(ewidencja, listaPracownikowView);
             dodajPracownikaController = new DodajPracownikaController(scanner, ewidencja);
             usunPracownikaController = new UsunPracownikaController(scanner, ewidencja, listaPracownikowView);
-            kopiaZapasowaController = new KopiaZapasowaController(scanner, ewidencja);
+            kopiaZapasowaController = new KopiaZapasowaController(scanner, ewidencja, executor);
         } catch (Exception e) {
             Errors.bladInicjalizacjiError();
         }

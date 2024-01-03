@@ -143,6 +143,4 @@ public class InputGetters {
         }
         return limitKosztow;
     }
-
-
 }

@@ -29,6 +29,4 @@ public class Menus {
     public static void wyborKompresji(){
         System.out.print("Kompresja [G]zip/[Z]ip      :       ");
     }
-
-
 }
